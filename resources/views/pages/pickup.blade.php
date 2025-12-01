@@ -17,63 +17,18 @@
                         <table class="table table-hover">
                             <thead class="table-borderless">
                                 <tr>
-                                    <th>Code</th>
+                                    <th>Kode</th>
                                     <th>Pelanggan</th>
-                                    <th>
-                                        <select style="width: 160px;" name="terima_filter" id="terima_filter"
-                                            class="form-select border-0 fw-bold">
-                                            <option value="">Tgl Terima</option>
-                                            <option value="0">Tgl Terima a~z</option>
-                                            <option value="1">Tgl Terima z~a</option>
-                                        </select>
-                                    </th>
-                                    <th>
-                                        <select style="width: 220px;" name="perkiraan_filter" id="perkiraan_filter"
-                                            class="form-select border-0 fw-bold">
-                                            <option value="">Perkiraan Selesai</option>
-                                            <option value="0">Perkiraan Selesai a~z</option>
-                                            <option value="1">Perkiraan Selesai z~a</option>
-                                        </select>
-                                    </th>
-                                    <th>
-                                        <select style="width: 135px;" name="status_filter" id="status_filter"
-                                            class="form-select border-0 fw-bold">
-                                            <option value="">Status</option>
-                                            <option value="0">Status a~z</option>
-                                            <option value="1">Status z~a</option>
-                                        </select>
-                                    </th>
-                                    <th>Total</th>
-                                    <th>Pembayaran</th>
-                                    <th>Kembalian</th>
+                                    <th>Tanggal Ambil</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($orders as $item)
-                                    @php
-                                        $status = 'Belum diambil';
-                                        if ($item->status == 1) {
-                                            $status = 'Sudah diambil';
-                                        }
-                                    @endphp
+                                @foreach ($pickups as $item)
                                     <tr>
-                                        <td>{{ $item->code }}</td>
+                                        <td>{{ $item->order->code }}</td>
                                         <td>{{ $item->customer->name }}</td>
-                                        @php
-                                            $start_date = new DateTime($item->date);
-                                            $end_date = new DateTime($item->end_date);
-                                        @endphp
-                                        <td>{{ $start_date->format('d/m/Y') }}</td>
-                                        <td>{{ $end_date->format('d/m/Y') }}</td>
-                                        <td>
-                                            <div class="d-flex flex-column">
-                                                <p class="badge text-success m-0">{{ $status }}</p>
-                                            </div>
-                                        </td>
-                                        <td>Rp {{ number_format($item->total, 0, ',', '.') }}</td>
-                                        <td>Rp {{ number_format($item->payment, 0, ',', '.') }}</td>
-                                        <td>Rp {{ number_format($item->change, 0, ',', '.') }}</td>
+                                        <td>{{ $item->pickup_date }}</td>
                                         <td>
                                             <div>
                                                 <a href="{{ route('detail.show', $item->id) }}" title="Detail Pesanan"

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
+use App\Models\Pickup;
 
 class PickupController extends Controller
 {
     public function index()
     {
-        $orders = Order::where('status', '=', 1)->get();
+        $pickups = Pickup::with('customer', 'order')->get();
 
-        return view('pages.pickup', compact('orders'));
+        return view('pages.pickup', compact('pickups'));
     }
 }

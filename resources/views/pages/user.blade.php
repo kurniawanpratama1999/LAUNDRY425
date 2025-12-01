@@ -76,50 +76,40 @@
                         data-bs-target="#staticBackdrop">Tambah User</button>
                 </div>
                 <div class="card-body">
-                    <div class="table table-responsive">
-                        <table class="table table-hover">
-                            <thead class="table-borderless">
-                                <tr>
-                                    <th>Row</th>
-                                    <th>Nama</th>
-                                    <th>Level</th>
-                                    <th>Email</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($users as $key => $item)
-                                    <tr>
-                                        <td>
-                                            <div>
-                                                <a href="{{ route('user.show', $item->id) }}"
-                                                    class="btn btn-outline-primary">
-                                                    {{ $key + 1 }}
-                                                </a>
-                                            </div>
-                                        </td>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->level->name ?? '' }}</td>
-                                        <td>{{ $item->email }}</td>
-                                        @if ($item->id !== 1 || Auth::user()->level_id !== $item->id)
-                                            <td>
-                                                <div>
-                                                    <form action="{{ route('user.destroy', $item->id) }}" method="post">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <button type="button"
-                                                            onclick="return confirm('Yakin ingin hapus ?')"
-                                                            class="btn btn-outline-danger">
-                                                            <i class="bi bi-eraser"></i>
-                                                        </button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        @endif
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                    <div style="grid-template-columns: repeat(4, 1fr);" class="d-grid w-100 overflow-x-auto">
+
+                        <div class="fw-bold border-bottom py-1 px-2">Nama</div>
+                        <div class="fw-bold border-bottom py-1 px-2">Level</div>
+                        <div class="fw-bold border-bottom py-1 px-2">Email</div>
+                        <div class="fw-bold border-bottom py-1 px-2">Aksi</div>
+
+                        @foreach ($users as $key => $item)
+                            <div data-cell="Nama" class="border-bottom py-1 px-2 d-flex align-items-center">
+                                <span>{{ $item->name }}</span>
+                            </div>
+
+                            <div data-cell="Level" class="border-bottom py-1 px-2 d-flex align-items-center">
+                                <span class="badge bg-yellow-300">{{ $item->level->name }}</span>
+                            </div>
+
+                            <div data-cell="Email" class="border-bottom py-1 px-2 d-flex align-items-center">
+                                <span>{{ $item->email }}</span>
+                            </div>
+
+                            <div data-cell="Aksi" class="border-bottom py-1 px-2">
+                                <a href="{{ route('user.update', $item->id) }}" class="btn btn-primary py-0">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                {{-- SEPERATE --}}
+                                <form action="{{ route('user.destroy', $item->id) }}" method="post" class="d-inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger py-0">
+                                        <i class="bi bi-eraser"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="card-footer">
