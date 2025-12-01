@@ -12,15 +12,15 @@
                     @method('PUT')
                 @endif
                 <div class="col-12">
-                    <x-form-input idprop="name" labelprop="Nama" :mode="$service ?? null" typeprop="text" />
+                    <x-form-input idprop="name" labelprop="Nama" :model="$service ?? null" typeprop="text" />
                 </div>
 
                 <div class="col-12">
-                    <x-form-input idprop="price" labelprop="Harga" :mode="$service ?? null" typeprop="text" />
+                    <x-form-input idprop="price" labelprop="Harga" :model="$service ?? null" typeprop="text" />
                 </div>
 
                 <div class="col-12">
-                    <x-form-textarea idprop="description" labelprop="Deskripsi" :mode="$service ?? null" />
+                    <x-form-textarea idprop="description" labelprop="Deskripsi" :model="$service ?? null" />
                 </div>
 
                 <div class="card-footer mt-3 bg-transparent">

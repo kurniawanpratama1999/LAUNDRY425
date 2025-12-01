@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('menus', function (Blueprint $col) {
             $col->id();
             $col->string('icon');
-            $col->enum('master', ['true', 'false'])->default('false');
+            $col->enum('master', ['true', 'false', 'hidden'])->default('false');
             $col->string('name');
             $col->string('link');
             $col->timestamps();

@@ -1,47 +1,26 @@
-# TATA CARA PENGGUNAAN APLIKASI LAUDRY
+# WebApp Laundry - Manual Book
 
-Semua navigasi bisa di akses oleh Adminstrator/Admin;
+default aplikasi berada di DatabaseSeeder, dari **User** sampai **Menu**. Hal yang paling diperhatikan adalah bagaimana cara mengoperasikan Perizinan URL agar setiap Level (role) dapat mengakses Menu Navigasi yang sudah dibuat.
+Terdapat setidaknya 10 daftar Navigasi yang tidak bisa dihapus, tetapi bisa di edit penamaannya, berikut adalah daftarnya:
+|Nama Menu |URL|Kegunaan|
+|-------------|------|--------|
+| Level | /level | sebagai akses terhadap menu, penamaan juga berfungsi sebagai hirarki jabatan |
+| User | /user | ini adalah akun-akun yang digunakan untuk login, setiap akun memiliki level. |
+| Service | /service | Jenis layanan yang disediakan untuk pelanggan, atur harga dan deskripsinya |
+| Customer | /customer | Simpan data pelanggan untuk menandakan setiap transaksi memiliki pelanggan |
+| Menu | /menu | atur penamaan navigasi, bisa tambah tapi tidak bisa hapus dari baris 1 sampai 10 |
+| Permission | /permission | atur menu yang dapat dibuka oleh setiap level |
+| Transaction | /transaction | buat transaksi |
+| Order | /order | riwayat transaksi |
+| Pickup | /pickup | riwayat transaksi yang sudah diambil oleh pelanggan |
+| Report | /report | berisi semua detail transaksi |
 
--   untuk menambah pastikan untuk menekan tombol tambah
--   untuk edit pastikan untuk menekan tombol pada baris row
--   untuk hapus pastikan unt
+## Navigasi Menu
 
-## 1. LEVEL USER
+kamu mungkin tidak bisa melihat detail order dan print struk order, hal ini dikarenakan detail pesanan memiliki URL yang belum ditambahkan pada halaman menu, kamu bisa tambahkan url untuk print dengan nama /print dan detail dengan nama /detail, setelah itu atur masternya menjadi hidden;
 
-tambahkan semua level / role disini, misal pimpinan atau operator, lalu atur akses perizinannya di permission
+## Tombol - Tombol
 
-## 2. AKUN USER
-
-Tambahkan akun untuk login dan jangan lupa untuk mengatur levelnya
-
-## 3. JENIS LAYANAN
-
-tambahkan jenis layanan selain yang sudah diatur pada defaultnya, jangan lupa untuk diberikan harga dan deskripsi
-
-## 4. DATA PELANGGAN
-
-atur data pelanggan, agar mudah dihubingi
-
-## 5. DAFTAR NAVIGASI
-
-Ini berfungsi untuk penamaan pada navigasi, tidak bisa ditambah atau dihapus, tapi bisa diedit penamaannya
-
-## 6. PERIZINAN
-
-perizinan di atur berdasakarn level, untuk level admin/administrator mempunyai semua akses
-
-## 7. TRANSAKSI
-
-disini tempat operator untuk menambah pesanan
-
-## 8. ORDER
-
-riwayat pesanan setelah transaksi ada disini
-
-## 10. PICKUP
-
-jika pesanan telah diambil oleh pelanggan, maka akan masuk sini
-
-## 11. REPORT
-
-ini adalah fitur untuk melihar semua transaksi details
+-   icon mata untuk melihat detail pesanan
+-   Tambah data untuk menambahkan data baru
+-   colom row untuk melakukan edit

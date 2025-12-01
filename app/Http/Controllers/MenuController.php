@@ -27,6 +27,7 @@ class MenuController extends Controller
         $validated = $req->validate([
             'icon' => ['required', 'string'],
             'name' => ['required', 'string'],
+            'master' => ['required', 'string'],
             'link' => ['required', 'string'],
         ]);
 
@@ -42,9 +43,11 @@ class MenuController extends Controller
     public function update(Request $req, int $id)
     {
         $menu = Menu::findOrFail($id);
+
         $validated = $req->validate([
             'icon' => ['required', 'string'],
             'name' => ['required', 'string'],
+            'master' => ['required', 'string'],
             'link' => ['required', 'string'],
         ]);
 

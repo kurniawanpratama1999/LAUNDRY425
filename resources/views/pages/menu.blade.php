@@ -5,22 +5,26 @@
 @section('content')
     <div class="container-fluid">
         <x-modal title="{{ isset($menu) ? 'Update Data Menu' : 'Tambah Data Menu' }}">
-            <form method="POST" action="{{ isset($menu) ? route('menu.update', $menu->id) : route('menu.store') }}">
+            <form  method="POST" action="{{ isset($menu) ? route('menu.update', $menu->id) : route('menu.store') }}">
                 @csrf
                 @if (isset($menu))
                     @method('PUT')
                 @endif
 
                 <div class="col-12">
-                    <x-form-input idprop="icon" labelprop="Icon" :mode="$menu ?? null" typeprop="text" />
+                    <x-form-input idprop="icon" labelprop="Icon" :model="$menu ?? null" typeprop="text" />
                 </div>
 
                 <div class="col-12">
-                    <x-form-input idprop="name" labelprop="Name Menu" :mode="$menu ?? null" typeprop="text" />
+                    <x-form-input idprop="name" labelprop="Name Menu" :model="$menu ?? null" typeprop="text" />
                 </div>
 
                 <div class="col-12">
-                    <x-form-input idprop="link" labelprop="Link" :mode="$menu ?? null" typeprop="text" />
+                    <x-form-input idprop="master" labelprop="Master" :model="$menu ?? null" typeprop="text" />
+                </div>
+
+                <div class="col-12">
+                    <x-form-input idprop="link" labelprop="Link" :model="$menu ?? null" typeprop="text" />
                 </div>
 
                 <div class="card-footer mt-3 bg-transparent">

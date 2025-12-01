@@ -32,7 +32,7 @@
 
                         <ul class="dropdown-menu">
                             @foreach ($menus as $menu)
-                                @if ($menu->master === 'true')
+                                @if ($menu->master === 'true' && $menu->master !== 'hidden')
                                     <li><a class="dropdown-item text-capitalize"
                                             href="{{ $menu->link }}">{{ $menu->name }}</a></li>
                                 @endif
@@ -41,7 +41,7 @@
                     </li>
 
                     @foreach ($menus as $menu)
-                        @if ($menu->master === 'false')
+                        @if ($menu->master === 'false' && $menu->master !== 'hidden')
                             <li class="nav-item">
                                 <a href="{{ $menu->link }}" class="nav-link text-capitalize">{{ $menu->name }}</a>
                             </li>
